@@ -1,3 +1,3 @@
 export default {
-  result:''//最终结果
+  base:''//基地址
 }

@@ -1,5 +1,6 @@
-export default{
-    updateResult(state,payload){
-      state.result=payload
-    }
+export default {
+  updateBase(state, payload) {
+    state.base = payload;
+    sessionStorage.setItem('base', JSON.stringify(payload))
+  }
 }

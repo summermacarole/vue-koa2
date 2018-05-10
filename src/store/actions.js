@@ -8,7 +8,7 @@ export default {
         .then(res => {
           console.log(res)
           resolve(res)
-          dispatch('getBaseAbout', res['data']['url'])
+          commit('updateBase', res['data']['url'])
         })
         .catch(e => {
           console.log(e)
@@ -16,11 +16,14 @@ export default {
     })
   },
   getBaseAbout({commit, state}, params) {
-
-    console.log(params)
-    axios.get(params + '/about')
-      .then(res => {
-        commit('updateResult', res['data']['msg'])
-      })
+    return new Promise((resolve, reject) => {
+      axios.get(params + '/about')
+        .then(res => {
+          resolve(res)
+        })
+        .catch(e => {
+          console.log(e)
+        })
+    })
   }
 }
