@@ -45,7 +45,7 @@
       ...mapState(['base'])
     },
     methods: {
-      ...mapActions(["getBase", "getBaseAbout"])
+      ...mapActions(["getBase", "getBaseAbout"]),
     }
   };
 </script>
