@@ -17,22 +17,22 @@
     name: "App",
     created() {
       let self = this;
-      let base=sessionStorage.getItem('base')
-      if(base){
+      let base = sessionStorage.getItem('base')
+      if (base) {
         console.log('已经有基地址l')
         self.getBaseAbout(JSON.parse(base))
-          .then(res=>{
+          .then(res => {
             console.log('获取到数据了吗1')
-            self.msg=res['data']['msg']
+            self.msg = res['data']['msg']
           })
-      }else{
+      } else {
         self.getBase()
           .then(res => {
-            self.getBaseAbout(res['data']['url'])
-              .then(res=>{
-                console.log('获取到数据了吗2')
-                self.msg=res['data']['msg']
-              })
+            return self.getBaseAbout(res['data']['url'])
+          })
+          .then(res => {
+            console.log('获取到数据了吗2')
+            self.msg = res['data']['msg']
           })
       }
     },
